@@ -24,3 +24,15 @@ function getComputerChoice(){
 
 getComputerChoice()
 
+// Step 3:
+
+
+function getHumanChoice(){
+    let userInput = prompt('Enter your choice: Rock, Paper, or Scissors');
+    return (userInput.toLowerCase());
+
+}
+
+getHumanChoice();
+
+
