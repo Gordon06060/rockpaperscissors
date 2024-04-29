@@ -20,20 +20,6 @@ function getComputerChoice(){
 
 }
 
-// Step 3:
-// function getHumanChoice(){
-//     let userInput = prompt('Enter your choice: Rock, Paper, or Scissors');
-//     return (userInput.toLowerCase());
-// }
-
-
-
-// Step 4:
-
-
-
-//Step 5: 
-
 
 let humanScore = 0;
 let computerScore = 0;
@@ -47,31 +33,43 @@ function displayWinner(winningMessage){
 // making a function that can display it
 function playRound(humanChoice, computerChoice){
     if ((humanChoice == 'rock') && (computerChoice == 'paper')){
+        computerScore++;
         displayWinner('You lose! Paper beats rock');
+        displayComputerScore();
         
             } 
         
     else if ((humanChoice == 'paper') && (computerChoice == 'rock')){
+        humanScore++;
         displayWinner('You Win! Rock beats Paper');
+        displayHumanScore();
             }
         
     else if ((humanChoice == 'scissors') && (computerChoice == 'rock')){
+        computerScore++;
         displayWinner('You Lose! Rock Beats Scissors');
+        displayComputerScore();
 
             }
         
     else if ((humanChoice == 'rock') && (computerChoice == 'scissors')){
+        humanScore++;
         displayWinner('You win! Rock Beats Scissors');
+        displayHumanScore();
 
             }
         
     else if ((humanChoice == 'paper') && (computerChoice == 'scissors')){
+        computerScore++;
         displayWinner('You Lose! scissors beats paper');
+        displayComputerScore();
             
             }
         
     else if ((humanChoice == 'scissors') && (computerChoice == 'paper')){
+        humanScore++;
         displayWinner('You Win! Scissors beats paper');
+        displayHumanScore();
 
             }
         
@@ -111,3 +109,20 @@ scissorButton.addEventListener('click',
 
 )
 
+
+function displayHumanScore(){
+    const scoreContainer = document.querySelector('#humanScoreContainer');
+    const scoreContext = document.createElement('div');
+    scoreContext.classList.add('scoreContext');
+    scoreContext.textContent = humanScore;
+    scoreContainer.appendChild(scoreContext);
+
+}
+
+function displayComputerScore(){
+    const computerContainer = document.querySelector('#computerScoreContainer');
+    const compcontext = document.createElement('div');
+    compcontext.classList.add('compcontext');
+    compcontext.textContent = computerScore;
+    computerContainer.appendChild(compcontext);
+}
