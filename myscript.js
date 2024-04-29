@@ -109,20 +109,21 @@ scissorButton.addEventListener('click',
 
 )
 
+const scoreContainer = document.querySelector('#humanScoreContainer');
+let scoreContext = document.createElement('div');
+scoreContext.classList.add('scoreContext');
+
+const computerContainer = document.querySelector('#computerScoreContainer');
+let compcontext = document.createElement('div');
+compcontext.classList.add('compcontext');
 
 function displayHumanScore(){
-    const scoreContainer = document.querySelector('#humanScoreContainer');
-    const scoreContext = document.createElement('div');
-    scoreContext.classList.add('scoreContext');
     scoreContext.textContent = humanScore;
     scoreContainer.appendChild(scoreContext);
 
 }
 
 function displayComputerScore(){
-    const computerContainer = document.querySelector('#computerScoreContainer');
-    const compcontext = document.createElement('div');
-    compcontext.classList.add('compcontext');
     compcontext.textContent = computerScore;
     computerContainer.appendChild(compcontext);
 }
