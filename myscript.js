@@ -35,8 +35,7 @@ function playRound(humanChoice, computerChoice){
     if ((humanChoice == 'rock') && (computerChoice == 'paper')){
         computerScore++;
         displayWinner('You lose! Paper beats rock');
-        displayComputerScore();
-        
+        displayComputerScore();      
             } 
         
     else if ((humanChoice == 'paper') && (computerChoice == 'rock')){
@@ -79,33 +78,36 @@ function playRound(humanChoice, computerChoice){
 
 //Rock Button 
 const rockButton = document.querySelector('#rock');
+function runRock(){
+    const computerSelection = getComputerChoice();
+    playRound('rock', computerSelection);
+    determineWinner();
+}
 rockButton.addEventListener("click",
-    function runRock(){
-        const computerSelection = getComputerChoice();
-        playRound('rock', computerSelection);
-    }
+runRock
 )
 
 
 //Paper Button
 const paperButton = document.querySelector('#paper');
+function runPaper(){
+    const computerSelection = getComputerChoice();
+    playRound('paper', computerSelection);
+    determineWinner();
+}
 paperButton.addEventListener('click',
-    function runPaper(){
-        const computerSelection = getComputerChoice();
-        playRound('paper', computerSelection);
-    }
-
-
-
+runPaper
 )
 
 //Scissor button
 const scissorButton = document.querySelector('#scissor');
+function runScissor(){
+    const computerSelection = getComputerChoice();
+    playRound('scissors', computerSelection);
+    determineWinner();
+}
 scissorButton.addEventListener('click',
-    function runScissor(){
-        const computerSelection = getComputerChoice();
-        playRound('scissors', computerSelection);
-    }
+runScissor
 
 )
 
@@ -126,4 +128,43 @@ function displayHumanScore(){
 function displayComputerScore(){
     compcontext.textContent = computerScore;
     computerContainer.appendChild(compcontext);
+}
+
+function win(){
+    const winningMessage = document.querySelector('#winningMessage');
+    const messageContext = document.createElement('div');
+    messageContext.classList.add('messageContext');
+    messageContext.textContent = 'You Win! ';
+    winningMessage.appendChild(messageContext);
+};
+
+function lose(){
+    const losingMessage = document.querySelector('#losingMessage');
+    const messageContext = document.createElement('div');
+    messageContext.classList.add('messageContext');
+    messageContext.textContent = 'You Lose! ';
+    losingMessage.appendChild(messageContext);
+};
+
+function determineWinner(){
+    if (humanScore >= 5){
+        win();
+        compcontext.remove();
+        scoreContext.remove();
+        removeListener();
+    }
+
+    else if (computerScore >= 5){
+        lose();
+        compcontext.remove();
+        scoreContext.remove();
+        removeListener();
+    }
+}
+
+
+function removeListener(){
+    rockButton.removeEventListener('click', runRock);
+    paperButton.removeEventListener('click', runPaper);
+    scissorButton.removeEventListener('click', runScissor);
 }
